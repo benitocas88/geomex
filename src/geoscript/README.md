@@ -9,7 +9,7 @@ but if you prefer re-download the file please do the next:
 
 Download from [sepomex](https://www.correosdemexico.gob.mx/SSLServicios/ConsultaCP/CodigoPostal_Exportar.aspx)
 and choose the format txt file. You could save the file in any place, but when you uncompress the file 
-you should change the name file and format by sepomex.csv or if you prefer, feel free to edit
+you should change the name file and format extension by sepomex.csv or if you prefer, feel free to edit
 the ```__init__.py``` file into geoscript but is very important mantain the extension format as .csv
 
 Ensure the ```filename.csv``` exists and matching
