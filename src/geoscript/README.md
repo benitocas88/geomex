@@ -18,4 +18,4 @@ Ensure the ```filename.csv``` exists and matching
 path_doc = os.path.join(os.path.abspath('..'), "src", "geoscript", "filename.csv")
 ``
  
- If everything is ok, so are you ready to start. Let's go! 
+ If everything is ok, so you ready to start. Let's go! 
