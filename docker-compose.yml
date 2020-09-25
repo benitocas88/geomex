@@ -15,7 +15,6 @@ services:
       - ./.env.local
     ports:
       - "9090:5000"
-    command: bash -c "flask db upgrade && flask run --host=0"
     environment:
       - FLASK_APP=/app/src/manage.py
       - FLASK_ENV=development
@@ -29,3 +28,8 @@ services:
       MYSQL_DATABASE: geomex
     ports:
       - "3320:3306"
+    volumes:
+      - geodata:/var/lib/mysql
+
+volumes:
+  geodata:

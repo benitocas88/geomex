@@ -6,5 +6,5 @@ Werkzeug==1.0.1
 alembic==1.4.3
 mysqlclient==2.0.1
 python-dotenv==0.14.0
-
-pandas
+gunicorn==20.0.4
+pandas==1.1.2
