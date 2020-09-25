@@ -1,22 +1,10 @@
-FROM python:3.8.3-slim
+FROM python:3.8.5-slim
 
-ENV APP_USER=python
+ENV PYTHONUNBUFFERED 1
+RUN apt-get update && apt-get install -y default-libmysqlclient-dev build-essential software-properties-common
 
-RUN groupadd -r ${APP_USER} && useradd --no-log-init -r -g ${APP_USER} ${APP_USER}
-RUN apt-get update -y
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
-WORKDIR /home/python/app
-
-ADD . ./
-
-RUN apt-get install \
-    build-essential \
-    software-properties-common \
-    python3-pip \
-    python3-dev \
-    default-libmysqlclient-dev -y
-RUN pip3 install --no-cache-dir -r ./requirements.txt
-RUN pip3 install pandas pip-upgrader
-RUN apt-get purge -y --auto-remove
-
-USER ${APP_USER}:${APP_USER}
+WORKDIR /app/src
+COPY ./src .

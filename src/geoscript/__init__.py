@@ -2,9 +2,10 @@ import os
 # noinspection PyPackageRequirements
 from pandas import read_csv
 
-from geo.models import Neighborhood, Municipality, State
+from geomex.models import Neighborhood, Municipality, State
 
 
+# noinspection PyUnresolvedReferences
 class Geomex:
     def __init__(self):
         path_doc = os.path.join(
@@ -57,3 +58,4 @@ class Geomex:
 
             neighborhood.save()
             print(neighborhood)
+

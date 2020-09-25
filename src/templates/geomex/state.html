@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul>
+        {% for state in states %}
+            <li>
+                <a href="{{ url_for('home_municipality', state_id=state.id) }}">
+                    {{ state.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

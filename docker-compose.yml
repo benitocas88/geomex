@@ -1,33 +1,31 @@
 version: "3.8"
 
 services:
-  geomex-server:
-    build: .
-    container_name: geomex-service
+  geoscript:
+    image: ebe/geo:latest
     depends_on:
       - mariadb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: geomex
     volumes:
-      - ./:/home/python/app/
+      - ./src:/app/src
+    env_file:
+      - ./.env.local
     ports:
-      - "5000:5000"
+      - "9090:5000"
+    command: bash -c "flask db upgrade && flask run --host=0"
     environment:
-      - FLASK_APP=/home/python/app/src/manage.py
+      - FLASK_APP=/app/src/manage.py
       - FLASK_ENV=development
-    command: /bin/sh -c "flask db upgrade --directory=/home/python/app/src/migrations && flask run --host=0.0.0.0"
+    restart: "on-failure"
 
   mariadb:
-    image: library/mariadb:10.4.13
-    container_name: db-geomex
-    restart: always
+    image: library/mariadb:10.5.5
+    container_name: geomaria
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_USER: develop
-      MYSQL_PASSWORD: secret
       MYSQL_DATABASE: geomex
-    volumes:
-      - geomex:/var/lib/mysql
     ports:
-      - "3306:3306"
-
-volumes:
-  geomex:
+      - "3320:3306"
