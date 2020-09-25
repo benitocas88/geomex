@@ -1,0 +1,15 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "css-build": "npx node-sass -r scss -o css",
+    "css-watch": "yarn run css-build --watch",
+    "css-dev": "yarn run css-watch"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.0",
+    "node-sass": "^4.14.1"
+  }
+}
