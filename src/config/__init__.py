@@ -19,6 +19,10 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 
+class ProductionConfig(Config):
+    pass
+
 app_config = dict(
     development=DevelopmentConfig,
+    production=ProductionConfig
 )

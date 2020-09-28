@@ -5,6 +5,7 @@ services:
     image: ebe/geo:latest
     depends_on:
       - mariadb
+      # - nginx
     build:
       context: .
       dockerfile: Dockerfile
@@ -30,6 +31,14 @@ services:
       - "3320:3306"
     volumes:
       - geodata:/var/lib/mysql
+
+  # nginx:
+  #  image: library/nginx:1.18.0
+  #  container_name: geonginx
+  #  ports:
+  #    - "9090:80"
+  #  environment:
+  #    - NGINX_PORT=80
 
 volumes:
   geodata:

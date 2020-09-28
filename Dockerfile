@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:bionic
 
 LABEL maintainer="beni522@gmail.com"
 
@@ -6,17 +6,18 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install -y \
     python3.8 \
-    python3.8-dev python3-pip \
+    python3.8-dev \
+    python3-pip \
     default-libmysqlclient-dev \
     build-essential \
     gcc \
     g++ \
     make \
-    apt-transport-https \
     curl
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 
 COPY ./requirements.txt /tmp/requirements.txt
+RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o /tmp/setup_12.sh

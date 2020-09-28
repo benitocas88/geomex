@@ -6,7 +6,8 @@ from app import create_app
 from geomex.models import State, Municipality
 from geoscript import Geomex
 
-app = create_app(env=getenv('FLASK_ENV'))
+env = getenv('FLASK_ENV')
+app = create_app(env)
 
 
 @app.route('/')
