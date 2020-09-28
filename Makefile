@@ -6,3 +6,9 @@ up: build
 
 geo:
 	docker-compose exec geoscript flask geo
+
+stop:
+	docker-compose stop
+
+restart:
+	docker-compose restart

@@ -8,7 +8,7 @@ db = SQLAlchemy()
 mg = Migrate()
 
 
-def create_app(env: str = 'development'):
+def create_app(env: str):
     app = Flask(__name__)
     app.config.from_object(app_config[env])
 

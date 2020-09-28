@@ -6,7 +6,7 @@ from app import create_app
 from geomex.models import State, Municipality
 from geoscript import Geomex
 
-env = getenv('FLASK_ENV')
+env = getenv('FLASK_ENV', 'development')
 app = create_app(env)
 
 

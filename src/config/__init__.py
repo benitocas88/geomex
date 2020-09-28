@@ -22,7 +22,13 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     pass
 
+
+class TestConfig(Config):
+    pass
+
+
 app_config = dict(
     development=DevelopmentConfig,
-    production=ProductionConfig
+    production=ProductionConfig,
+    testing=TestConfig
 )

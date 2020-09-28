@@ -2,6 +2,7 @@ FROM ubuntu:bionic
 
 LABEL maintainer="beni522@gmail.com"
 
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install -y \
@@ -27,5 +28,3 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update && apt-get install -y nodejs yarn
 
 WORKDIR /app/src
-
-CMD gunicorn --workers=1 --bind=0.0.0.0:5000 --thread=1 manage:app
