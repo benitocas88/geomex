@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  geoscript:
+  geoapp:
     image: ebe/geo:latest
     depends_on:
       - mariadb
@@ -40,15 +40,16 @@ services:
 
   nginx:
     image: library/nginx:1.19.2
-    container_name: geonginx
+    container_name: geox
     ports:
       - "80:80"
     depends_on:
-      - geoscript
+      - geoapp
     networks:
       - geonet
     volumes:
       - ./nginx/geo.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./src/static:/usr/share/nginx/html/static:ro
 
 volumes:
   geodata:

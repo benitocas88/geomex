@@ -5,6 +5,7 @@ load_dotenv()
 
 
 class Config:
+    SECRET_KEY = b'\x80\xf2/\xc7\xfb\xf2\xa3E\xb34OCI\xd9~.'
     PROPAGATE_EXCEPTIONS = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = getenv('SQLALCHEMY_DATABASE_URI')
@@ -17,18 +18,20 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    TEMPLATES_AUTO_RELOAD = True
+    SEND_FILE_MAX_AGE_DEFAULT = 0
 
 
 class ProductionConfig(Config):
     pass
 
 
-class TestConfig(Config):
-    pass
+class TestingConfig(Config):
+    TESTING = True
 
 
 app_config = dict(
     development=DevelopmentConfig,
     production=ProductionConfig,
-    testing=TestConfig
+    testing=TestingConfig
 )
