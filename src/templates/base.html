@@ -7,6 +7,35 @@
     <title>GeoT</title>
 </head>
 <body>
+    <nav class="navbar is-success is-spaced" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <form method="post">
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Find a postal code" autofocus />
+                                </div>
+                                <div class="control">
+                                    <button type="submit" class="button is-info">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <a class="navbar-item" href="https://bulma.io/">
+                        API-v1.0 Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <section class="section">
         <div class="container">
             {% block content %}{% endblock %}
