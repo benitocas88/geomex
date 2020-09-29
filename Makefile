@@ -16,5 +16,8 @@ stop:
 restart:
 	docker-compose restart
 
-css-dev: yarn
-	docker-compose exec -w /app/src/static geoapp yarn run css-dev
+css-build: yarn
+	docker-compose exec -w /app/src/static geoapp yarn run css-build
+
+css-dev: css-build
+	docker-compose exec -w /app/src/static geoapp yarn run css-watch

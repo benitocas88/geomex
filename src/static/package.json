@@ -4,9 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "css-build": "npx node-sass -r scss -o css",
-    "css-watch": "yarn run css-build --watch",
-    "css-dev": "yarn run css-watch"
+    "css-build": "node-sass --omit-source-map-url -r scss -o css",
+    "css-watch": "yarn run css-build --watch"
   },
   "devDependencies": {
     "bulma": "^0.9.0",
