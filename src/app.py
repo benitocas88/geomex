@@ -8,8 +8,8 @@ db = SQLAlchemy()
 mg = Migrate()
 
 
-def create_app(env: str):
-    app = Flask(__name__)
+def create_app(env: str) -> Flask:
+    app = Flask(__name__, static_folder='static')
     app.config.from_object(app_config[env])
 
     db.init_app(app)
