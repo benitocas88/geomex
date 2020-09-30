@@ -28,17 +28,10 @@ class Mixin:
 class State(Mixin, db.Model):
     __tablename__ = 'state'
 
-    municipalities = db.relationship(
-        'Municipality',
-        uselist=True,
-        lazy=True
-    )
-
 
 class Municipality(Mixin, db.Model):
     __tablename__ = 'municipality'
 
-    neighborhoods = db.relationship('Neighborhood', uselist=True, lazy=True)
     state_id = db.Column(
         db.Integer,
         db.ForeignKey('state.id', name='fk_state__municipality')
