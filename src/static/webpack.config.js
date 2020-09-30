@@ -6,7 +6,6 @@ const MiniCssExtractor = require("mini-css-extract-plugin");
 
 // noinspection JSUnresolvedVariable
 module.exports = {
-    mode: "development",
     entry: {
         main: "./scss/main.scss"
     },
