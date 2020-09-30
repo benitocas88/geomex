@@ -1,24 +1,33 @@
-# Normalize all postal codes from Mexico. States, municipalities and neighborhoods
+# Normalize in a relational database the sepomex data from csv file
 
-### To run the project you will need install the next:
+### To run project you will need install:
 
 - Docker version 19.03.11
 - docker-compose version 1.26.0
 
-Ensure the ```.env``` file exists into `src` folder and contains the next line:
+
+
+- Put on root project and type:
 
 ``
-SQLALCHEMY_DATABASE_URI=mysql+mysqldb://develop:secret@mariadb:3306/geomex
+make up
 ``
 
-After that only execute the next command
+- In browser go to:
 
-``
-docker-compose up -d --build
-``
+``http://127.0.01``
 
-Then you could connect into container ``docker exec -it CONTAINERID bash`` and go to path ``src/`` and type:
-``flask geo`` 
+- Compile the assets:
+
+``make webpack``
+
+- Run script to populate the database from a csv file:
+
+`make geo`
+
+- Just restore dump:
+
+`make georestore`
 
 Read more in 
 ``
