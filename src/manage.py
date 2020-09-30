@@ -1,17 +1,26 @@
 from os import getenv
 from flask.templating import render_template
 from flask.wrappers import Response
+from flask.globals import request
 
 from app import create_app
+from geomex import service
 from geoscript import Geomex
 
 env = getenv('FLASK_ENV', 'development')
 app = create_app(env)
 
 
-@app.route('/')
-def home_state() -> Response:
-    return render_template('geomex/zipcode.html')
+@app.route('/', methods=['GET', 'POST'])
+def home() -> Response:
+    context = {}
+
+    if request.method == 'POST':
+        postal_code = request.form.get('zipcode').strip()
+        neighborhoods = service.get_by_postal_code(postal_code)
+        context['neighborhoods'] = neighborhoods
+
+    return Response(render_template('geomex/zipcode.html', **context))
 
 
 @app.cli.command('geo')

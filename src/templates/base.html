@@ -12,10 +12,12 @@
             <div class="navbar-menu">
                 <div class="navbar-start">
                     <div class="navbar-item">
-                        <form method="post">
+                        <form method="post" action="{{ url_for('home') }}">
                             <div class="field has-addons">
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Find a postal code" autofocus />
+                                    <input name="zipcode" class="input" type="text" placeholder="Find a postal code"
+                                           autofocus autocomplete="off"
+                                    />
                                 </div>
                                 <div class="control">
                                     <button type="submit" class="button is-info">
