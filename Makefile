@@ -16,11 +16,8 @@ stop:
 restart:
 	docker-compose restart
 
-css-build: yarn
-	docker-compose exec -w /app/src/static geoapp yarn run css-build
-
-css-dev: css-build
-	docker-compose exec -w /app/src/static geoapp yarn run css-watch
-
 georestore:
 	cat geomex.sql | docker exec -i geomaria mysql -u root --password=secret geomex
+
+webpack: yarn
+	docker-compose exec -w /app/src/static geoapp yarn run webpack-dev
