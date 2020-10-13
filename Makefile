@@ -16,8 +16,11 @@ stop:
 restart:
 	docker-compose restart
 
-georestore:
+restore:
 	cat geomex.sql | docker exec -i geomaria mysql -u root --password=secret geomex
 
 webpack: yarn
 	docker-compose exec -w /app/src/static geoapp yarn run webpack-dev
+
+upgrade:
+	docker-compose exec geoapp flask db upgrade
