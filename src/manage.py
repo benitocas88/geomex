@@ -4,7 +4,9 @@ from flask.wrappers import Response
 from flask.globals import request
 
 from app import create_app
+
 from geomex import service
+
 from geoscript import Geomex
 
 env = getenv('FLASK_ENV', 'development')
@@ -21,6 +23,11 @@ def home() -> Response:
         context['neighborhoods'] = neighborhoods
 
     return Response(render_template('geomex/zipcode.html', **context))
+
+
+@app.route('/users', methods=['GET', 'POST'])
+def users() -> Response:
+    return Response(render_template("user/user.html"))
 
 
 @app.cli.command('geo')

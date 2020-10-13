@@ -1,11 +1,12 @@
 from os import getenv
-from dotenv.main import load_dotenv
-
-load_dotenv()
 
 
 class Config:
     SECRET_KEY = b'\x80\xf2/\xc7\xfb\xf2\xa3E\xb34OCI\xd9~.'
+
+    WTF_CSRF_ENABLED = True
+    WTF_CSRF_SECRET_KEY = b'\xb5.\x17W\x103^=\x9d_\t\x9d\x93\xc0\x82\xda'
+
     PROPAGATE_EXCEPTIONS = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = getenv('SQLALCHEMY_DATABASE_URI')
