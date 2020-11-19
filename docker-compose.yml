@@ -5,12 +5,10 @@ services:
     image: ebe/geo:latest
     depends_on:
       - mariadb
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: geomex
     volumes:
-      - ./src:/app/src
+      - ./src:/app/src:rw
     env_file:
       - ./.env.local
     expose:
@@ -23,7 +21,6 @@ services:
 
   mariadb:
     image: library/mariadb:10.5.5
-    command: --max-allowed-packet=64MB
     container_name: geomaria
     environment:
       MYSQL_ROOT_PASSWORD: secret
@@ -31,15 +28,15 @@ services:
     ports:
       - "3320:3306"
     volumes:
-      - geodata:/var/lib/mysql
+      - geodata:/var/lib/mysql:rw
     networks:
       - geonet
 
   nginx:
     image: library/nginx:1.19.2
-    container_name: geox
+    container_name: geonx
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - geoapp
     networks:

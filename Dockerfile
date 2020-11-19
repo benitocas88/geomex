@@ -29,6 +29,8 @@ RUN python -m pip install --upgrade pip
 RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
 
 WORKDIR /app/src
-COPY ./src/wsgi.py .
 
-CMD gunicorn -c wsgi.py manage:app
+RUN useradd appuser && chown -R appuser /app/src
+USER appuser
+
+CMD gunicorn --workers=1 --bind=0.0.0.0:5000 manage:app

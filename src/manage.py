@@ -7,8 +7,6 @@ from app import create_app
 
 from geomex import service
 
-from geoscript import Geomex
-
 env = getenv('FLASK_ENV', 'development')
 app = create_app(env)
 
@@ -28,9 +26,3 @@ def home() -> Response:
 @app.route('/users', methods=['GET', 'POST'])
 def users() -> Response:
     return Response(render_template("user/user.html"))
-
-
-@app.cli.command('geo')
-def geoscript():
-    geomex = Geomex()
-    geomex.run()
