@@ -1,14 +1,11 @@
-from os import getenv
 from flask.templating import render_template
 from flask.wrappers import Response
 from flask.globals import request
 
 from app import create_app
-
 from geomex import service
 
-env = getenv('FLASK_ENV', 'development')
-app = create_app(env)
+app = create_app()
 
 
 @app.route('/', methods=['GET', 'POST'])

@@ -20,7 +20,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(sa|sc|c)ss$/,
-                loader: [
+                use: [
                     MiniCssExtractor.loader,
                     "css-loader",
                     "sass-loader"

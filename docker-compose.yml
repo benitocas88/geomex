@@ -2,25 +2,24 @@ version: "3.8"
 
 services:
   geoapp:
-    image: ebe/geo:latest
+    image: ebe/geomex:latest
     depends_on:
       - mariadb
     build: .
     container_name: geomex
     volumes:
-      - ./src:/app/src:rw
+      - ./src:/opt/geomex:rw
     env_file:
       - ./.env.local
     expose:
       - 5000
     environment:
-      - FLASK_APP=/app/src/manage.py
       - FLASK_ENV=development
     networks:
       - geonet
 
   mariadb:
-    image: library/mariadb:10.5.5
+    image: library/mariadb:10.5.8
     container_name: geomaria
     environment:
       MYSQL_ROOT_PASSWORD: secret
@@ -33,10 +32,11 @@ services:
       - geonet
 
   nginx:
-    image: library/nginx:1.19.2
-    container_name: geonx
+    image: library/nginx:1.19.5-alpine
+    container_name: geoproxy
     ports:
       - "8080:80"
+      - "7070:80"
     depends_on:
       - geoapp
     networks:

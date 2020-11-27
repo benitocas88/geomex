@@ -4,18 +4,19 @@ LABEL maintainer="beni522@gmail.com"
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV APP_DIR /opt/geomex
+ENV FLASK_APP ${APP_DIR}/manage.py
 
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    build-essential \
-    gcc \
-    g++ \
-    make \
-    curl \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     python3.8 \
     python3.8-dev \
     python3-pip \
-    default-libmysqlclient-dev
+    default-libmysqlclient-dev \
+    curl \
+    python3-setuptools \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o /tmp/setup_12.sh
@@ -28,9 +29,7 @@ COPY ./requirements.txt /tmp/requirements.txt
 RUN python -m pip install --upgrade pip
 RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
 
-WORKDIR /app/src
-
-RUN useradd appuser && chown -R appuser /app/src
-USER appuser
+WORKDIR ${APP_DIR}
+COPY ./src .
 
 CMD gunicorn --workers=1 --bind=0.0.0.0:5000 manage:app

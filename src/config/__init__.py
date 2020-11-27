@@ -21,10 +21,11 @@ class DevelopmentConfig(Config):
     DEBUG = True
     TEMPLATES_AUTO_RELOAD = True
     SEND_FILE_MAX_AGE_DEFAULT = 0
+    STATIC_URL = 'http://127.0.0.1:7070/'
 
 
 class ProductionConfig(Config):
-    pass
+    STATIC_URL = 'https://guros.cnd.mx/'
 
 
 class TestingConfig(Config):
