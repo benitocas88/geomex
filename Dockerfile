@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o /tmp/setup_12.sh
-RUN bash /tmp/setup_12.sh
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/setup_14.sh
+RUN bash /tmp/setup_14.sh
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y nodejs yarn
