@@ -25,7 +25,7 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    STATIC_URL = 'https://guros.cnd.mx/'
+    pass
 
 
 class TestingConfig(Config):
