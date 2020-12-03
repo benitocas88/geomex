@@ -4,7 +4,6 @@ from admin.models import SQLAlchemySchema, Schema, ma
 from geomex.models import Neighborhood, Municipality, State
 
 
-
 class NeighborhoodSchema(SQLAlchemySchema):
     class Meta(SQLAlchemySchema.Meta):
         model = Neighborhood
@@ -39,5 +38,5 @@ class GeomexSchema(Schema):
     state = ma.Nested(MunicipalitySchema)
 
 
-class PostalCodeArgs(Schema):
-    postal_code = String(required=True, data_key="postalCode")
+class PostCodeArgs(Schema):
+    postcode = String(required=True)

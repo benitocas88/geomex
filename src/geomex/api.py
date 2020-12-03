@@ -2,13 +2,13 @@ from flask_restful import Resource
 from webargs.flaskparser import use_kwargs
 
 from geomex import service
-from geomex.schemas import PostalCodeArgs, GeomexSchema
+from geomex.schemas import PostCodeArgs, GeomexSchema
 
 
 class Geomex(Resource):
-    @use_kwargs(PostalCodeArgs, location='querystring')
-    def get(self, postal_code: str):
-        neighborhoods = service.get_by_postal_code(postal_code)
+    @use_kwargs(PostCodeArgs, location='querystring')
+    def get(self, postcode: str):
+        neighborhoods = service.get_by_postal_code(postcode)
 
         if not neighborhoods:
             raise
