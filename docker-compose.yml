@@ -18,6 +18,18 @@ services:
     networks:
       - geonet
 
+  migrations:
+    image: ebe/geomigrate:latest
+    container_name: geomigrate
+    build: .
+    depends_on:
+      - geoapp
+    env_file:
+      - ./.env.local
+    networks:
+      - geonet
+    command: flask db upgrade
+
   mariadb:
     image: library/mariadb:10.5.8
     container_name: geomaria

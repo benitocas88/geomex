@@ -9,6 +9,7 @@ yarn: build
 
 webpack: yarn
 	docker run -it --rm \
+	--name geopack \
 	--volume $(CURDIR)/src:/opt/geomex \
 	--workdir /opt/geomex/static \
 	ebe/geomex:latest npx webpack --watch --mode=development

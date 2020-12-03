@@ -1,7 +1,6 @@
 from typing import List
 
-from .models import Neighborhood
-
+from geomex.models import Neighborhood
 
 # noinspection PyUnresolvedReferences
 class GeomexService:
