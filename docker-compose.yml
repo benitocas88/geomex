@@ -29,6 +29,8 @@ services:
     networks:
       - geonet
     command: flask db upgrade
+    environment:
+      - FLASK_ENV=development
 
   mariadb:
     image: library/mariadb:10.5.8

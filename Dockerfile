@@ -5,7 +5,7 @@ LABEL maintainer="beni522@gmail.com"
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV APP_DIR /opt/geomex
-ENV FLASK_APP ${APP_DIR}/manage.py
+ENV FLASK_APP ${APP_DIR}/app:create_app()
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     python3.8 \
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
     python3-setuptools \
     gcc \
-    && rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
 
@@ -32,4 +32,4 @@ RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
 WORKDIR ${APP_DIR}
 COPY ./src .
 
-CMD gunicorn --workers=1 --bind=0.0.0.0:5000 manage:app
+CMD gunicorn --workers=1 --bind=0.0.0.0:5000 'app:create_app()'
