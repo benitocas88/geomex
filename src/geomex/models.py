@@ -1,13 +1,13 @@
 from admin.models import Model, db
 
 
-class State(Model, db.Model):
+class State(Model):
     __tablename__ = 'state'
 
     name = db.Column(db.String(length=90), nullable=False)
 
 
-class Municipality(Model, db.Model):
+class Municipality(Model):
     __tablename__ = 'municipality'
 
     name = db.Column(db.String(length=90), nullable=False)
@@ -22,7 +22,7 @@ class Municipality(Model, db.Model):
     )
 
 
-class Neighborhood(Model, db.Model):
+class Neighborhood(Model):
     __tablename__ = 'neighborhood'
 
     name = db.Column(db.String(length=90), nullable=False)

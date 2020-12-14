@@ -10,7 +10,9 @@ ma = Marshmallow()
 
 # https://docs.sqlalchemy.org/en/13/orm/extensions/declarative/mixins.html?highlight=tablename#mixin-and-custom-base-classes
 # noinspection PyUnresolvedReferences
-class Model:
+class Model(db.Model):
+    __abstract__ = True
+
     @classmethod
     @declared_attr
     def __tablename__(cls):
