@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,35 +10,13 @@
     <nav class="navbar is-success is-spaced" role="navigation" aria-label="main navigation">
         <div class="container">
             <div class="navbar-menu">
-                <div class="navbar-start">
-                    <div class="navbar-item">
-                        <form method="post" action="{{ url_for('.index') }}">
-                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                            <div class="field has-addons">
-                                <div class="control">
-                                    <input name="zipcode" class="input" type="text" placeholder="Find a postal code"
-                                           autofocus autocomplete="off"
-                                    />
-                                </div>
-                                <div class="control">
-                                    <button type="submit" class="button is-info">
-                                        Search
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <a class="navbar-item" href="#">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="{{ url_for('user.index') }}">
                         Sign up
                     </a>
-
-                    <a class="navbar-item" href="#">
+                    <a class="navbar-item" href="{{ url_for('user.login') }}">
                         Sign in
                     </a>
-                </div>
-
-                <div class="navbar-end">
                     <a class="navbar-item" href="#">
                         API-v1.0 Docs
                     </a>

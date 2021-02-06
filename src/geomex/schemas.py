@@ -30,13 +30,12 @@ class StateSchema(SQLAlchemySchema):
             State.name.key
         )
 
-
 class GeomexSchema(Schema):
-    postal_code = String()
+    zipcode = String()
     neighborhoods = ma.Nested(NeighborhoodSchema, many=True)
     municipality = ma.Nested(MunicipalitySchema)
     state = ma.Nested(MunicipalitySchema)
 
 
-class PostCodeArgs(Schema):
-    postcode = String(required=True)
+class ZipcodeArgs(Schema):
+    zipcode = String(required=True)

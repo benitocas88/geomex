@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from marshmallow.schema import Schema as BaseSchema
+from marshmallow.utils import EXCLUDE
 from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.ext.declarative import declared_attr
 
@@ -29,6 +30,10 @@ class Model(db.Model):
             db.session.rollback()
             raise error
 
+    @classmethod
+    def by_username(cls, username: str):
+        return cls.query.filter_by(username=username).first()
+
 
 class Schema(BaseSchema):
     # https://marshmallow.readthedocs.io/en/stable/examples.html#inflection-camel-casing-keys
@@ -40,10 +45,13 @@ class Schema(BaseSchema):
     def on_bind_field(self, field_name, field_obj):
         field_obj.data_key = self.__camelcase(field_obj.data_key or field_name)
 
+    class Meta:
+        unknown = EXCLUDE
 
 class SQLAlchemySchema(Schema, ma.SQLAlchemySchema):
-    class Meta:
-        fields = ('id', 'created_at', 'updated_at')
-        dump_only = ('id', 'created_at', 'updated_at')
+    class Meta(Schema.Meta):
+        model = None
         sqla_session = db.Session
         load_instance = True
+        fields = ('id', 'created_at', 'updated_at')
+        dump_only = ('id', 'created_at', 'updated_at')
