@@ -30,6 +30,7 @@ class StateSchema(SQLAlchemySchema):
             State.name.key
         )
 
+
 class GeomexSchema(Schema):
     zipcode = String()
     neighborhoods = ma.Nested(NeighborhoodSchema, many=True)

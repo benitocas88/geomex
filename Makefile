@@ -15,10 +15,7 @@ webpack: yarn
 	ebe/geomex:latest npx webpack --watch --mode=development
 
 up:
-	docker-compose up --build
-
-geo:
-	docker-compose exec geoapp flask geo
+	docker-compose up -d
 
 stop:
 	docker stop $(shell docker ps -aq --filter name='geo*')

@@ -8,6 +8,7 @@ from admin.models import db, ma
 sea = SeaSurf()
 migrate = Migrate()
 
+
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_pyfile(join('admin', 'settings.py'))

@@ -48,6 +48,7 @@ class Schema(BaseSchema):
     class Meta:
         unknown = EXCLUDE
 
+
 class SQLAlchemySchema(Schema, ma.SQLAlchemySchema):
     class Meta(Schema.Meta):
         model = None

@@ -12,6 +12,7 @@ class Blueprint(BlueprintBase):
             template_folder='templates'
         )
 
+
 api_v1 = Blueprint('api_v1', __name__, url_prefix='/v1.0')
 api = Api(api_v1)
 

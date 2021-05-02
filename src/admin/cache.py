@@ -2,6 +2,7 @@ from admin.settings import redis_cli
 
 redis_cli = redis_cli()
 
+
 class ApiSession:
     EXPIRES_AT = 15
 
