@@ -5,15 +5,14 @@ services:
     image: ebe/geomex:latest
     depends_on:
       - mariadb
-      - redis
     build: .
     container_name: geomex
     volumes:
-      - ./src:/opt/geomex:rw
+      - ./src:/home/userapp/src:rw
     env_file:
       - ./.env.local
     expose:
-      - 5000
+      - "5000"
     environment:
       - FLASK_ENV=development
     networks:
@@ -34,13 +33,13 @@ services:
       - FLASK_ENV=development
 
   mariadb:
-    image: library/mariadb:10.5.9
+    image: mariadb:10.6.4-focal
     container_name: geomaria
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: geomex
     ports:
-      - "3320:3306"
+      - "3360:3306"
     volumes:
       - geodata:/var/lib/mysql:rw
     networks:
@@ -59,12 +58,6 @@ services:
     volumes:
       - ./nginx/geo.conf:/etc/nginx/conf.d/default.conf:ro
       - ./src/static:/usr/share/nginx/html/static:ro
-
-  redis:
-    image: library/redis:6.2.2-alpine
-    container_name: georedis
-    networks:
-      - geonet
 
 volumes:
   geodata:
