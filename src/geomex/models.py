@@ -1,4 +1,4 @@
-from admin.models import Model, db
+from commons.models import Model, db
 
 
 class State(Model):

@@ -1,6 +1,6 @@
 from sqlalchemy_utils.types.password import PasswordType
 from sqlalchemy_utils.types.email import EmailType
-from admin.models import Model, db
+from commons.models import Model, db
 
 
 class User(Model):

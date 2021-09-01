@@ -3,7 +3,7 @@ from flask.templating import render_template
 from flask.globals import request
 from flask.helpers import url_for
 from werkzeug.utils import redirect
-from admin.api import Blueprint
+from commons.api import Blueprint
 from user import service
 
 user = Blueprint('user', __name__)

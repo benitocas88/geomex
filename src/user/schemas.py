@@ -1,6 +1,6 @@
 from marshmallow.fields import String, Email
 from marshmallow.validate import Length
-from admin.models import SQLAlchemySchema
+from commons.models import SQLAlchemySchema
 from user.models import User
 
 class UserSchema(SQLAlchemySchema):

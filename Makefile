@@ -7,12 +7,12 @@ yarn: build
 	--workdir /home/userapp/src/static \
 	ebe/geomex:latest yarn install
 
-webpack: yarn
+webpack-dev: yarn
 	docker run -it --rm \
 	--name geopack \
 	--volume $(CURDIR)/src:/home/userapp/src \
 	--workdir /home/userapp/src/static \
-	ebe/geomex:latest webpack --watch --mode=development
+	ebe/geomex:latest webpack --mode=development
 
 up:
 	docker-compose up -d --build

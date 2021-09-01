@@ -26,11 +26,15 @@ RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr
 RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y nodejs yarn
 
+RUN useradd userapp -ms /bin/bash
+USER userapp
+
 COPY ./requirements.txt /tmp/requirements.txt
+
 RUN python -m pip install --upgrade pip
 RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
 
 WORKDIR $APP_ROOT/src
-COPY ./src .
+COPY --chown=userapp:userapp ./src .
 
 CMD gunicorn --workers=1 --bind=0.0.0.0:5000 'app:create_app()'

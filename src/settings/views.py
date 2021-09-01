@@ -1,6 +1,6 @@
 from flask.wrappers import Response
 from flask.templating import render_template
-from admin.api import Blueprint
+from commons.api import Blueprint
 
 home = Blueprint('home', __name__)
 

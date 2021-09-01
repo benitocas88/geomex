@@ -1,6 +1,6 @@
 from marshmallow.fields import String
 
-from admin.models import SQLAlchemySchema, Schema, ma
+from commons.models import SQLAlchemySchema, Schema, ma
 from geomex.models import Neighborhood, Municipality, State
 
 
