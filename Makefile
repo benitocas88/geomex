@@ -12,7 +12,7 @@ webpack-dev: yarn
 	--name geopack \
 	--volume $(CURDIR)/src:/home/userapp/src \
 	--workdir /home/userapp/src/static \
-	ebe/geomex:latest webpack --mode=development
+	ebe/geomex:latest webpack --watch --mode=development
 
 up:
 	docker-compose up -d --build
@@ -34,3 +34,6 @@ upgrade:
 
 console:
 	docker-compose run geoapp bash
+
+migrate:
+	docker-compose exec geoapp bash -c "flask db upgrade"
