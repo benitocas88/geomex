@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   geoapp:
@@ -9,17 +9,14 @@ services:
     container_name: geomex
     volumes:
       - ./src:/home/userapp/src:rw
+      - ./requirements:/opt/requirements:rw
     env_file:
       - ./.env.local
-    expose:
-      - "5000"
-    environment:
-      - FLASK_ENV=development
     networks:
       - geonet
 
   mariadb:
-    image: mariadb:10.6.4-focal
+    image: mariadb:10.10.2-jammy
     container_name: geomaria
     environment:
       MYSQL_ROOT_PASSWORD: secret
@@ -32,7 +29,7 @@ services:
       - geonet
 
   nginx:
-    image: nginx:1.21-alpine
+    image: nginx:1.23-alpine
     container_name: geoproxy
     ports:
       - "8080:80"

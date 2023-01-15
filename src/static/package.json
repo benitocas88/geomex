@@ -4,13 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "bulma": "^0.9.3",
-    "css-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^2.2.1",
-    "node-sass": "^7.0.0",
-    "sass-loader": "^12.1.0",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0",
-    "npm-check-updates": "^11.8.3"
+    "bulma": "^0.9.4",
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.2",
+    "node-sass": "^8.0.0",
+    "sass-loader": "^13.2.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "npm-check-updates": "^16.6.2"
   }
 }

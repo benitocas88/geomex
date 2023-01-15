@@ -1,24 +1,26 @@
-FROM ubuntu:hirsute
+FROM ubuntu:jammy-20221130
 
 LABEL maintainer="beni522@gmail.com"
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV APP_ROOT /home/userapp
+ENV PYTHONPATH $APP_ROOT/src
 ENV PATH $APP_ROOT/src/static/node_modules/.bin:$APP_ROOT/.local/bin:$PATH
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    python3.9 \
-    python3.9-dev \
+    python3 \
     python3-pip \
+    python3-dev \
     default-libmysqlclient-dev \
-    curl \
+    build-essential \
     python3-setuptools \
     gcc \
+    curl \
     libffi-dev \
 && rm -rf /var/lib/apt/lists/*
 
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x -o /tmp/setup_16.sh
 RUN bash /tmp/setup_16.sh
@@ -29,12 +31,11 @@ RUN apt-get update && apt-get install -y nodejs yarn
 RUN useradd userapp -ms /bin/bash
 USER userapp
 
-COPY ./requirements.txt /tmp/requirements.txt
-
-RUN python -m pip install --upgrade pip
-RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
+COPY ./requirements /opt/requirements
+RUN python -m pip install -U pip --disable-pip-version-check && python -m pip install --no-cache-dir pip-tools
+RUN pip-sync /opt/requirements/base.txt --pip-args "--no-cache-dir --no-deps"
 
 WORKDIR $APP_ROOT/src
 COPY --chown=userapp:userapp ./src .
 
-CMD gunicorn --workers=1 --bind=0.0.0.0:5000 'app:create_app()'
+CMD gunicorn --workers=1 --bind=0.0.0.0:5000 "app:create_app()"

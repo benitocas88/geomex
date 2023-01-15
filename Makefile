@@ -1,5 +1,6 @@
 build:
-	docker build -t ebe/geomex:latest .
+	docker-compose build
+	# docker build -t ebe/geomex:latest .
 
 yarn: build
 	docker run -it --rm \
@@ -37,3 +38,6 @@ console:
 
 migrate:
 	docker-compose exec geoapp bash -c "flask db upgrade"
+
+logs:
+	docker-compose logs -tf

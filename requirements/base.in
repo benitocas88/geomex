@@ -1,0 +1,17 @@
+Flask
+Flask-SQLAlchemy
+flask-marshmallow
+marshmallow-sqlalchemy
+marshmallow
+SQLAlchemy
+Flask-Migrate
+Werkzeug
+alembic
+gunicorn
+SQLAlchemy-Utils
+Flask-RESTful
+webargs
+passlib
+bcrypt
+PyJWT
+mysqlclient
