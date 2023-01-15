@@ -1,6 +1,5 @@
 build:
 	docker-compose build
-	# docker build -t ebe/geomex:latest .
 
 yarn: build
 	docker run -it --rm \

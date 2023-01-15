@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x -o /tmp/setup_16.sh
-RUN bash /tmp/setup_16.sh
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x -o /tmp/setup_19.sh
+RUN bash /tmp/setup_19.sh
 RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
 RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y nodejs yarn
