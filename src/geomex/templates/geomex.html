@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="get">
+        <div class="field">
+            <input type="text" class="input" placeholder="09301" name="zipcode" autofocus />
+        </div>
+
+        <div class="field">
+            <div class="select">
+                <select>
+                    <option>Neighborhoods</option>
+                    {% for s in neighborhoods %}
+                        <option>{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </form>
+{% endblock %}

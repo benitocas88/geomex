@@ -39,4 +39,4 @@ class GeomexSchema(Schema):
 
 
 class ZipcodeArgs(Schema):
-    zipcode = String(required=True)
+    zipcode = String(required=False)

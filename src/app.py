@@ -21,9 +21,11 @@ def create_app() -> Flask:
 
     from settings.views import home
     from user.views import user
+    from geomex.views import geomex
 
     app.register_blueprint(home)
     app.register_blueprint(user)
+    app.register_blueprint(geomex)
 
     @app.template_global()
     def static_url(prefix, filename) -> str:
