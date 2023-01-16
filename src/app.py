@@ -1,4 +1,5 @@
 from os.path import join
+
 from flask.app import Flask
 from flask_migrate import Migrate
 from urllib.parse import urljoin
@@ -26,6 +27,6 @@ def create_app() -> Flask:
 
     @app.template_global()
     def static_url(prefix, filename) -> str:
-        return urljoin(app.config['STATIC_URL'], f'/{prefix}/{filename}')
+        return urljoin(app.config["STATIC_URL"], f"/{prefix}/{filename}")
 
     return app

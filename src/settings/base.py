@@ -1,6 +1,6 @@
 from os import environ
 
-SECRET_KEY = b'\x80\xf2/\xc7\xfb\xf2\xa3E\xb34OCI\xd9~.'
+SECRET_KEY = "ytW6KzluuzsUtuP3WcbAhSZbfVUeibi0L2E5HtvB7MY"
 
 PROPAGATE_EXCEPTIONS = True
 SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -16,4 +16,4 @@ TEMPLATES_AUTO_RELOAD = True
 SEND_FILE_MAX_AGE_DEFAULT = 0
 STATIC_URL = 'http://127.0.0.1:7070/'
 
-JWT_SECRET_KEY = b'%\xc3o\xec\\\xcc\x80\xcd\xcd\x96\xfc\x8d\nS\xd11'
+JWT_SECRET_KEY = "4Qcf4zDsjk4yHHSziqiVXf0o1HD3Lgk2UG1piLYi0co"
