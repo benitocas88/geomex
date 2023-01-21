@@ -16,16 +16,10 @@ def create_app() -> Flask:
     ma.init_app(app)
     migrate.init_app(app, db, compare_type=True)
 
-    from commons.api import api_v1
-    app.register_blueprint(api_v1)
+    from urls import admin, api
 
-    from settings.views import home
-    from user.views import user
-    from geomex.views import geomex
-
-    app.register_blueprint(home)
-    app.register_blueprint(user)
-    app.register_blueprint(geomex)
+    api.make_api(app)
+    admin.make_admin(app)
 
     @app.template_global()
     def static_url(prefix, filename) -> str:

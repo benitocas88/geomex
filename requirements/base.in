@@ -16,3 +16,4 @@ bcrypt
 PyJWT
 mysqlclient
 environs
+Flask-WTF

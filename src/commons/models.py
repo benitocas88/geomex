@@ -10,7 +10,6 @@ ma = Marshmallow()
 
 
 # https://docs.sqlalchemy.org/en/13/orm/extensions/declarative/mixins.html?highlight=tablename#mixin-and-custom-base-classes
-# noinspection PyUnresolvedReferences
 class Model(db.Model):
     __abstract__ = True
 
@@ -36,15 +35,6 @@ class Model(db.Model):
 
 
 class Schema(BaseSchema):
-    # https://marshmallow.readthedocs.io/en/stable/examples.html#inflection-camel-casing-keys
-    @staticmethod
-    def __camelcase(s):
-        parts = iter(s.split("_"))
-        return next(parts) + "".join(i.title() for i in parts)
-
-    def on_bind_field(self, field_name, field_obj):
-        field_obj.data_key = self.__camelcase(field_obj.data_key or field_name)
-
     class Meta:
         unknown = EXCLUDE
 
@@ -52,7 +42,7 @@ class Schema(BaseSchema):
 class SQLAlchemySchema(Schema, ma.SQLAlchemySchema):
     class Meta(Schema.Meta):
         model = None
-        sqla_session = db.Session
+        sqla_session = db.session
         load_instance = True
         fields = ('id', 'created_at', 'updated_at')
         dump_only = ('id', 'created_at', 'updated_at')

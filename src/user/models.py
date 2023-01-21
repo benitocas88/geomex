@@ -4,7 +4,7 @@ from commons.models import Model, db
 
 
 class User(Model):
-    __tablename__ = 'user'
+    __tablename__ = 'customers'
 
     email = db.Column(EmailType(length=30), nullable=False, unique=True)
     username = db.Column(db.String(length=16), unique=True, nullable=False)

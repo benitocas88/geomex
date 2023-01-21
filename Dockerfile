@@ -35,9 +35,9 @@ RUN pip-sync /opt/requirements/base.txt --pip-args "--no-cache-dir --no-deps"
 WORKDIR $APP_ROOT/src
 COPY --chown=userapp:userapp ./src .
 
-USER root
-RUN apt-mark hold procps dnsutils curl libcurl4 libcurl4-openssl-dev librtmp1 nginx
-RUN apt-get autoremove --purge --allow-remove-essential -y build-essential gpgv
-USER userapp
+# USER root
+# RUN apt-mark hold procps dnsutils curl libcurl4 libcurl4-openssl-dev librtmp1 nginx
+# RUN apt-get autoremove --purge --allow-remove-essential -y build-essential gpgv
+# USER userapp
 
 CMD gunicorn --workers=1 --bind=0.0.0.0:5000 "app:create_app()"

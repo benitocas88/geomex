@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="get">
+    <form name="sepomex">
         <div class="field">
-            <input type="text" class="input" placeholder="09301" name="zipcode" autofocus />
-        </div>
-
-        <div class="field">
-            <div class="select">
-                <select>
-                    <option>Neighborhoods</option>
-                    {% for s in neighborhoods %}
-                        <option>{{ s.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            {{ form.zipcode(class='input', placeholder='97314') }}
         </div>
     </form>
+
+    <div class="field">
+        <div class="select">
+            <select name="{{ form.neighborhoods.name }}">
+                <option>Select an option here</option>
+                {%- for k, v in form.neighborhoods.choices %}
+                    <option value="{{ k }}">{{ v }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
 {% endblock %}

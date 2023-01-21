@@ -1,6 +1,6 @@
 from flask import Response
 from flask.templating import render_template
-from flask.views import View
+from geomex.forms import ZipcodeForm
 from geomex.service import GeomexService
 
 from commons.api import Blueprint
@@ -9,13 +9,15 @@ from webargs.flaskparser import use_kwargs
 geomex = Blueprint("geomex", __name__, url_prefix="/dashboard")
 
 
-@geomex.route("/sepomex", methods=("GET", "POST"))
+@geomex.route("/sepomex/", methods=("GET",))
 @use_kwargs(ZipcodeArgs, location="querystring")
 def index(**kwargs):
-    zipcode = kwargs.get("zipcode")
+    form = ZipcodeForm(data=kwargs)
 
-    context = {}
-    if zipcode:
+    if form.zipcode.data:
         geo = GeomexService()
-        context["neighborhoods"] = geo.get_by_postal_code(zipcode)
-    return Response(render_template("geomex.html", **context))
+        form.neighborhoods.choices = [
+            (s.id, s.name)
+            for s in geo.get_by_postal_code(form.zipcode.data)
+        ]
+    return Response(render_template("geomex.html", form=form))
