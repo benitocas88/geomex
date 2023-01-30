@@ -26,7 +26,7 @@ flask==2.2.2
     #   flask-wtf
 flask-marshmallow==0.14.0
     # via -r base.in
-flask-migrate==4.0.2
+flask-migrate==4.0.3
     # via -r base.in
 flask-restful==0.3.9
     # via -r base.in
@@ -36,7 +36,7 @@ flask-sqlalchemy==3.0.2
     #   flask-migrate
 flask-wtf==1.1.1
     # via -r base.in
-greenlet==2.0.1
+greenlet==2.0.2
     # via sqlalchemy
 gunicorn==20.1.0
     # via -r base.in
@@ -74,7 +74,7 @@ passlib==1.7.4
     # via -r base.in
 pyjwt==2.6.0
     # via -r base.in
-python-dotenv==0.21.0
+python-dotenv==0.21.1
     # via environs
 pytz==2022.7.1
     # via flask-restful
@@ -82,7 +82,7 @@ six==1.16.0
     # via
     #   flask-marshmallow
     #   flask-restful
-sqlalchemy==1.4.46
+sqlalchemy==2.0.0
     # via
     #   -r base.in
     #   alembic
@@ -91,6 +91,8 @@ sqlalchemy==1.4.46
     #   sqlalchemy-utils
 sqlalchemy-utils==0.39.0
     # via -r base.in
+typing-extensions==4.4.0
+    # via sqlalchemy
 webargs==8.2.0
     # via -r base.in
 werkzeug==2.2.2
