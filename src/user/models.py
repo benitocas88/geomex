@@ -1,3 +1,4 @@
+from sqlalchemy.orm import Mapped
 from sqlalchemy_utils.types.password import PasswordType
 from sqlalchemy_utils.types.email import EmailType
 from commons.models import Model, db
@@ -6,9 +7,9 @@ from commons.models import Model, db
 class User(Model):
     __tablename__ = 'customers'
 
-    email = db.Column(EmailType(length=30), nullable=False, unique=True)
-    username = db.Column(db.String(length=16), unique=True, nullable=False)
-    password = db.Column(PasswordType(max_length=90, schemes=['bcrypt']), nullable=False)
+    email: Mapped[str] = db.mapped_column(EmailType(length=30), nullable=False, unique=True)
+    username: Mapped[str] = db.mapped_column(db.String(length=16), unique=True, nullable=False)
+    password: Mapped[str] = db.mapped_column(PasswordType(max_length=90, schemes=['bcrypt']), nullable=False)
     # addresses = db.Column('Address', uselist=True, lazy=True)
 
 """

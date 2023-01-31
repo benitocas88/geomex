@@ -4,6 +4,7 @@ from marshmallow.schema import Schema as BaseSchema
 from marshmallow.utils import EXCLUDE
 from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import Mapped
 
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -18,7 +19,7 @@ class Model(db.Model):
     def __tablename__(cls):
         return cls.__name__.lower()
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id: Mapped[int] = db.mapped_column(db.Integer, primary_key=True, autoincrement=True)
 
     def save(self):
         try:

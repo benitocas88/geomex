@@ -1,7 +1,7 @@
 from flask import Response
 from flask.templating import render_template
 from geomex.forms import ZipcodeForm
-from geomex.service import GeomexService
+from geomex import service as geo
 
 from commons.api import Blueprint
 from geomex.schemas import ZipcodeArgs
@@ -15,9 +15,8 @@ def index(**kwargs):
     form = ZipcodeForm(data=kwargs)
 
     if form.zipcode.data:
-        geo = GeomexService()
         form.neighborhoods.choices = [
-            (s.id, s.name)
-            for s in geo.get_by_postal_code(form.zipcode.data)
+            (g.id, g.name)
+            for g in geo.get_by_postal_code(form.zipcode.data)
         ]
     return Response(render_template("geomex.html", form=form))

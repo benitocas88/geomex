@@ -2,7 +2,6 @@ from typing import List
 from geomex.models import Neighborhood
 
 
-# noinspection PyUnresolvedReferences
 class GeomexService:
     @staticmethod
     def get_by_postal_code(zipcode) -> List[Neighborhood]:
