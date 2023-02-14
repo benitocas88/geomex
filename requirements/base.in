@@ -14,6 +14,6 @@ webargs
 passlib
 bcrypt
 PyJWT
-mysqlclient
+mariadb
 environs
 Flask-WTF
