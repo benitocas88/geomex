@@ -1,5 +1,4 @@
-from sqlalchemy.orm import Mapped
-
+from sqlalchemy.orm.attributes import Mapped
 from commons.models import Model, db
 
 

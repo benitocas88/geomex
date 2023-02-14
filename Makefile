@@ -1,13 +1,13 @@
 build:
 	docker-compose build
 
-yarn: build
+npm: build
 	docker run -it --rm \
 	--volume $(CURDIR)/src:/home/userapp/src \
 	--workdir /home/userapp/src/static \
-	ebe/geomex:latest yarn install
+	ebe/geomex:latest npm install
 
-webpack-dev: yarn
+webpack-dev: npm
 	docker run -it --rm \
 	--name geopack \
 	--volume $(CURDIR)/src:/home/userapp/src \

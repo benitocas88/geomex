@@ -25,4 +25,10 @@ def create_app() -> Flask:
     def static_url(prefix, filename) -> str:
         return urljoin(app.config["STATIC_URL"], f"/{prefix}/{filename}")
 
+    @app.cli.command("test")
+    def test():
+        from geomex.models import Neighborhood
+        neighborhoods = Neighborhood.query.all()
+        print(neighborhoods)
+
     return app

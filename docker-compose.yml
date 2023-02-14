@@ -25,6 +25,8 @@ services:
     container_name: geomaria
     environment:
       MARIADB_ROOT_PASSWORD: secret
+      MARIADB_USER: mexgeo
+      MARIADB_PASSWORD: mexcret
       MARIADB_DATABASE: geomex
     ports:
       - "3360:3306"

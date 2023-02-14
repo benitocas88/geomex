@@ -8,20 +8,17 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PATH $APP_ROOT/src/static/node_modules/.bin:$APP_ROOT/.local/bin:$PATH
 
-RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y curl gcc \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
+    curl \
+    gcc \
+&& rm -rf /var/lib/apt/lists/*
 
 # https://computingforgeeks.com/install-mariadb-server-ubuntu-jammy-jellyfish/
 RUN curl -fsSL https://downloads.mariadb.com/MariaDB/mariadb_repo_setup -o /tmp/mariadb_repo_setup
-RUN bash /tmp/mariadb_repo_setup
-RUN apt-get update && apt-get install -y libmariadb3 libmariadb-dev
-
 RUN curl -fsSL https://deb.nodesource.com/setup_19.x -o /tmp/setup_19.sh
+RUN bash /tmp/mariadb_repo_setup
 RUN bash /tmp/setup_19.sh
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | \
-    tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y nodejs yarn
+RUN apt-get update && apt-get install -y libmariadb3 libmariadb-dev nodejs
 
 RUN useradd userapp -ms /bin/bash
 USER userapp
