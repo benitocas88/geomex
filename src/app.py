@@ -27,8 +27,8 @@ def create_app() -> Flask:
 
     @app.cli.command("test")
     def test():
-        from geomex.models import Neighborhood
-        neighborhoods = Neighborhood.query.all()
-        print(neighborhoods)
+        from geomex.commands.geomap import Sepomex
+        sepomex = Sepomex()
+        sepomex.geo()
 
     return app

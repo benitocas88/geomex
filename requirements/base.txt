@@ -92,11 +92,11 @@ sqlalchemy==2.0.3
     #   sqlalchemy-utils
 sqlalchemy-utils==0.40.0
     # via -r base.in
-typing-extensions==4.4.0
+typing-extensions==4.5.0
     # via sqlalchemy
 webargs==8.2.0
     # via -r base.in
-werkzeug==2.2.2
+werkzeug==2.2.3
     # via
     #   -r base.in
     #   flask

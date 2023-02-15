@@ -24,9 +24,7 @@ services:
     image: mariadb:10.10.3-jammy
     container_name: geomaria
     environment:
-      MARIADB_ROOT_PASSWORD: secret
-      MARIADB_USER: mexgeo
-      MARIADB_PASSWORD: mexcret
+      MARIADB_ROOT_PASSWORD: mexcret
       MARIADB_DATABASE: geomex
     ports:
       - "3360:3306"
