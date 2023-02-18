@@ -6,11 +6,7 @@ SECRET_KEY = env.str("SECRET_KEY", default="ytW6KzluuzsUtuP3WcbAhSZbfVUeibi0L2E5
 
 PROPAGATE_EXCEPTIONS = True
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = env.str(
-    "SQLALCHEMY_DATABASE_URI",
-    default="mariadb+mariadbconnector://root:mexcret@mariadb:3306/geomex"
-)
-# SQLALCHEMY_ENGINE_OPTIONS = {"connect_args": {"charset": "utf8mb4"}}
+SQLALCHEMY_DATABASE_URI = env.str("SQLALCHEMY_DB_URI")
 
 DEBUG = True
 TEMPLATES_AUTO_RELOAD = True

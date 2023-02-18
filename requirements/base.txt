@@ -65,24 +65,33 @@ marshmallow==3.19.0
     #   webargs
 marshmallow-sqlalchemy==0.28.1
     # via -r base.in
+numpy==1.24.2
+    # via pandas
 packaging==23.0
     # via
     #   mariadb
     #   marshmallow
     #   marshmallow-sqlalchemy
     #   webargs
+pandas==1.5.3
+    # via -r base.in
 passlib==1.7.4
     # via -r base.in
 pyjwt==2.6.0
     # via -r base.in
+python-dateutil==2.8.2
+    # via pandas
 python-dotenv==0.21.1
     # via environs
 pytz==2022.7.1
-    # via flask-restful
+    # via
+    #   flask-restful
+    #   pandas
 six==1.16.0
     # via
     #   flask-marshmallow
     #   flask-restful
+    #   python-dateutil
 sqlalchemy==2.0.4
     # via
     #   -r base.in
@@ -102,6 +111,8 @@ werkzeug==2.2.3
     #   flask
 wtforms==3.0.1
     # via flask-wtf
+xlrd==2.0.1
+    # via -r base.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

@@ -5,19 +5,26 @@ import pathlib
 
 class Sepomex:
     def read_file(self):
-        route = os.path.abspath(os.path.join("geomex", "commands", "sepomex.txt"))
+        route = os.path.abspath(os.path.join("geomex", "commands", "sepomex.xls"))
         file = pathlib.Path(route)
 
         if not (file.exists() and file.is_file()):
             raise FileNotFoundError()
 
-        if file.suffix != ".txt":
+        if file.suffix != ".xls":
             raise ValueError("invalid format file")
 
-        csv_file = open(mode="r", file=file, encoding="utf8")
-        csv_reader = csv.reader(csv_file, delimiter=",", dialect=csv.excel)
-        headers = next(csv_reader)
-        print(headers)
+        from pandas import read_excel, DataFrame
+
+        xls = read_excel(file, sheet_name=["Durango"])
+        data = DataFrame(
+            xls,
+            columns=[
+                "d_asenta",
+            ],
+        )
+
+        print(data)
 
     def geo(self):
         self.read_file()

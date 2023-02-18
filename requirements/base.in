@@ -17,3 +17,5 @@ PyJWT
 mariadb
 environs
 Flask-WTF
+pandas
+xlrd
