@@ -10,6 +10,7 @@ services:
     volumes:
       - ./src:/home/userapp/src:rw
       - ./requirements:/opt/requirements:rw
+      - ./scripts:/opt/scripts:rw
     env_file:
       - ./.env.local
     networks:
@@ -29,7 +30,7 @@ services:
     ports:
       - "3360:3306"
     volumes:
-      - geodata:/var/lib/mysql:rw
+      - geomaria:/var/lib/mysql:rw
     networks:
       - geonet
 
@@ -48,7 +49,7 @@ services:
       - ./src/static:/usr/share/nginx/html/static:ro
 
 volumes:
-  geodata:
+  geomaria:
 
 networks:
   geonet:

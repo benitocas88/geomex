@@ -30,4 +30,4 @@ RUN pip-sync /opt/requirements/base.txt --pip-args "--no-cache-dir --no-deps"
 WORKDIR $APP_ROOT/src
 COPY --chown=userapp:userapp ./src .
 
-CMD gunicorn --workers=1 --bind=0.0.0.0:5000 "app:create_app()"
+CMD gunicorn --workers=2 --bind=0.0.0.0:5000 "app:create_app()"

@@ -40,3 +40,7 @@ migrate:
 
 logs:
 	docker-compose logs -tf
+
+PHONY: run-deps
+run-deps:
+	docker-compose run --rm geoapp sh /opt/scripts/run-deps.sh $(args)
