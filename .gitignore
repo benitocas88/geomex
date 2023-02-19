@@ -427,5 +427,6 @@ poetry.toml
 src/static/css/
 src/static/js/
 src/static/package-lock.json
+src/geomex/commands/*sepomex.xls*
 
 # End of https://www.toptal.com/developers/gitignore/api/git,node,linux,python,pycharm+iml

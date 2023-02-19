@@ -20,7 +20,7 @@ class Neighborhood(Model):
     __tablename__ = 'neighborhoods'
 
     name: Mapped[str] = db.mapped_column(db.String(length=90), nullable=False)
-    postal_code: Mapped[str] = db.mapped_column(db.String(length=5), nullable=False, index=True)
+    zipcode: Mapped[str] = db.mapped_column(db.String(length=5), nullable=False, index=True)
     settlement: Mapped[str] = db.mapped_column(db.String(length=30))
     municipality_id: Mapped[int] = db.mapped_column(db.ForeignKey('municipalities.id', name='fk_municipalities__neighborhoods'))
     municipality: Mapped[Municipality] = db.relationship(Municipality, uselist=False, lazy='select')

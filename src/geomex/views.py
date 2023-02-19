@@ -16,7 +16,7 @@ def index(**kwargs):
 
     if form.zipcode.data:
         form.neighborhoods.choices = [
-            (g.id, g.name)
+            (g.id, f"{g.name} - ({g.settlement})")
             for g in geo.get_by_postal_code(form.zipcode.data)
         ]
     return Response(render_template("geomex.html", form=form))

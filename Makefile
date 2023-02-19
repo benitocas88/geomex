@@ -33,7 +33,7 @@ upgrade:
 	docker-compose exec geoapp flask db upgrade
 
 console:
-	docker-compose run geoapp bash
+	docker-compose exec geoapp bash
 
 migrate:
 	docker-compose exec geoapp bash -c "flask db upgrade"

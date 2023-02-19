@@ -6,5 +6,5 @@ class GeomexService:
     @staticmethod
     def get_by_postal_code(zipcode) -> List[Neighborhood]:
         return Neighborhood.query.filter_by(
-            postal_code=zipcode
+            zipcode=zipcode
         ).order_by(Neighborhood.name).all()
