@@ -10,13 +10,15 @@ from customers.forms import SignupForm
 user = Blueprint('user', __name__)
 
 
-@user.route('/register', methods=['GET', 'POST'])
+@user.route('/register/', methods=['GET', 'POST'])
 def index() -> Response:
-    form = SignupForm()
+    form = SignupForm(request.form)
+    if request.method == "POST":
+        service.signup(form.data)
     return Response(render_template('register.html', form=form))
 
 
-@user.route('/login', methods=['GET', 'POST'])
+@user.route('/login/', methods=['GET', 'POST'])
 def login() -> Response:
     context = {}
 

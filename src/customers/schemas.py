@@ -13,5 +13,4 @@ class UserSchema(SQLAlchemySchema):
         )
 
     email = Email(required=True)
-    username = String(required=True, validate=[Length(min=1)])
     password = String(required=True, validate=[Length(min=6)])

@@ -3,17 +3,32 @@
 {% block content %}
     <form method="post">
         <div class="field">
-            <label class="label">Name</label>
+            <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="email" placeholder="e.g Alex Smith">
+                {{ form.email(class='input', placeholder='email@domain.com', autocomplete='off') }}
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Email</label>
+            <label class="label">Password</label>
             <div class="control">
-                <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                {{ form.password(class='input', placeholder='password123') }}
             </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Confirm your password</label>
+            <div class="control">
+                {{ form.confirmation(class='input', placeholder='password123') }}
+            </div>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <button class="button is-success">
+              Login
+            </button>
+          </p>
         </div>
     </form>
 {% endblock %}

@@ -30,10 +30,6 @@ class Model(db.Model):
             db.session.rollback()
             raise error
 
-    @classmethod
-    def by_username(cls, username: str):
-        return cls.query.filter_by(username=username).first()
-
 
 class Schema(BaseSchema):
     class Meta:

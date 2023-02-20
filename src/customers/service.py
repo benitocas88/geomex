@@ -8,22 +8,16 @@ ACCESS_TOKEN_EXPIRES_IN_MINUTES = 15
 
 
 class UserService:
-    @staticmethod
-    def register(data) -> User:
+    def signup(self, data) -> User:
         schema = UserSchema()
         user = schema.load(data)
         return user.save()
 
     @staticmethod
     def login(data):
-        schema = UserSchema(exclude=[User.email.key])
-
-        is_not_valid = schema.validate(data)
-        if is_not_valid:
-            return False
-
+        schema = UserSchema()
         auth = schema.load(data)
-        user = User.by_username(auth.username)
+        user = User.query.filter(User.email == auth.email).first()
         if user and user.password == data['password']:
             return user
         return False
