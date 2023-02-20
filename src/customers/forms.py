@@ -2,15 +2,18 @@ from flask_wtf.form import FlaskForm
 from wtforms import fields
 from wtforms.validators import DataRequired, EqualTo
 
-
-class SignupForm(FlaskForm):
+class SignForm(FlaskForm):
     email = fields.EmailField(
-        validators=[
-            DataRequired(),
-            EqualTo("confirmation")
-        ]
+        validators=[DataRequired()],
+        render_kw={
+            "placeholder": "email@domain.com",
+            "autocomplete": "off",
+        }
     )
     password = fields.PasswordField(
-        validators=[DataRequired()]
+        validators=[DataRequired()],
+        render_kw={"placeholder": "password123"},
     )
-    confirmation = fields.PasswordField()
+
+class SignupForm(SignForm):
+    confirmation = fields.PasswordField(render_kw={"placeholder": "password123"})

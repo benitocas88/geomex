@@ -2,24 +2,25 @@
 
 {% block content %}
     <form method="post">
+        {{ form.csrf_token }}
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                {{ form.email(class='input', placeholder='email@domain.com', autocomplete='off') }}
+                {{ form.email(class='input') }}
             </div>
         </div>
 
         <div class="field">
             <label class="label">Password</label>
             <div class="control">
-                {{ form.password(class='input', placeholder='password123') }}
+                {{ form.password(class='input') }}
             </div>
         </div>
 
         <div class="field">
             <label class="label">Confirm your password</label>
             <div class="control">
-                {{ form.confirmation(class='input', placeholder='password123') }}
+                {{ form.confirmation(class='input') }}
             </div>
         </div>
 

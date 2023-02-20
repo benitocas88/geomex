@@ -4,9 +4,10 @@ from flask.app import Flask
 from flask_migrate import Migrate
 from urllib.parse import urljoin
 from commons.models import db, ma
+from flask_wtf.csrf import CSRFProtect
 
 migrate = Migrate()
-
+csrf = CSRFProtect()
 
 def create_app() -> Flask:
     app = Flask(__name__)
@@ -15,6 +16,7 @@ def create_app() -> Flask:
     db.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db, compare_type=True)
+    csrf.init_app(app)
 
     from urls import admin, api
 
