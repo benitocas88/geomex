@@ -1,7 +1,8 @@
 from marshmallow.fields import String, Email
 from marshmallow.validate import Length
 from commons.models import SQLAlchemySchema
-from user.models import User
+from customers.models import User
+
 
 class UserSchema(SQLAlchemySchema):
     class Meta(SQLAlchemySchema.Meta):
@@ -9,7 +10,6 @@ class UserSchema(SQLAlchemySchema):
         fields = SQLAlchemySchema.Meta.fields + (
             User.email.key,
             User.password.key,
-            User.username.key
         )
 
     email = Email(required=True)

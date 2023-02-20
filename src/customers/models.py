@@ -8,7 +8,6 @@ class User(Model):
     __tablename__ = 'customers'
 
     email: Mapped[str] = db.mapped_column(EmailType(length=30), nullable=False, unique=True)
-    username: Mapped[str] = db.mapped_column(db.String(length=16), unique=True, nullable=False)
     password: Mapped[str] = db.mapped_column(PasswordType(max_length=90, schemes=['bcrypt']), nullable=False)
     # addresses = db.Column('Address', uselist=True, lazy=True)
 

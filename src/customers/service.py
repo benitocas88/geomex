@@ -1,10 +1,11 @@
 from flask.globals import current_app as app
 from jwt import encode as jwt_encode, decode as jwt_decode
 from datetime import datetime, timedelta
-from user.models import User
-from user.schemas import UserSchema
+from customers.models import User
+from customers.schemas import UserSchema
 
 ACCESS_TOKEN_EXPIRES_IN_MINUTES = 15
+
 
 class UserService:
     @staticmethod

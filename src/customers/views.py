@@ -4,14 +4,16 @@ from flask.globals import request
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 from commons.api import Blueprint
-from user import service
+from customers import service
+from customers.forms import SignupForm
 
 user = Blueprint('user', __name__)
 
+
 @user.route('/register', methods=['GET', 'POST'])
 def index() -> Response:
-    context = {}
-    return Response(render_template('register.html', **context))
+    form = SignupForm()
+    return Response(render_template('register.html', form=form))
 
 
 @user.route('/login', methods=['GET', 'POST'])

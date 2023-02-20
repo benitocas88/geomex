@@ -6,6 +6,7 @@ from geomex import service as geo
 from commons.api import Blueprint
 from geomex.schemas import ZipcodeArgs
 from webargs.flaskparser import use_kwargs
+
 geomex = Blueprint("geomex", __name__, url_prefix="/dashboard")
 
 
