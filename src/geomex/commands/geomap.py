@@ -46,7 +46,7 @@ class Sepomex:
                     municipality.save()
 
                 neighborhood_name = row["d_asenta"].strip()
-                zipcode = str(row["d_codigo"]).strip()
+                zipcode = row["d_codigo"].strip()
                 settlement = row["d_tipo_asenta"].strip()
 
                 neighborhood = Neighborhood.query.filter_by(
