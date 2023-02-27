@@ -19,3 +19,4 @@ environs
 Flask-WTF
 pandas
 xlrd
+# typing-extensions

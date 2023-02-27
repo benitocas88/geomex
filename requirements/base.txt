@@ -48,7 +48,7 @@ jinja2==3.1.2
     # via flask
 mako==1.2.4
     # via alembic
-mariadb==1.1.5.post3
+mariadb==1.1.6
     # via -r base.in
 markupsafe==2.1.2
     # via
@@ -63,7 +63,7 @@ marshmallow==3.19.0
     #   flask-marshmallow
     #   marshmallow-sqlalchemy
     #   webargs
-marshmallow-sqlalchemy==0.28.1
+marshmallow-sqlalchemy==0.28.2
     # via -r base.in
 numpy==1.24.2
     # via pandas
@@ -81,7 +81,7 @@ pyjwt==2.6.0
     # via -r base.in
 python-dateutil==2.8.2
     # via pandas
-python-dotenv==0.21.1
+python-dotenv==1.0.0
     # via environs
 pytz==2022.7.1
     # via
@@ -92,7 +92,7 @@ six==1.16.0
     #   flask-marshmallow
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.4
+sqlalchemy==1.4.46
     # via
     #   -r base.in
     #   alembic
@@ -101,8 +101,6 @@ sqlalchemy==2.0.4
     #   sqlalchemy-utils
 sqlalchemy-utils==0.40.0
     # via -r base.in
-typing-extensions==4.5.0
-    # via sqlalchemy
 webargs==8.2.0
     # via -r base.in
 werkzeug==2.2.3
