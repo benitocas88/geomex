@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=base.txt base.in
 #
-alembic==1.9.4
+alembic==1.10.1
     # via
     #   -r base.in
     #   flask-migrate
@@ -63,7 +63,7 @@ marshmallow==3.19.0
     #   flask-marshmallow
     #   marshmallow-sqlalchemy
     #   webargs
-marshmallow-sqlalchemy==0.28.2
+marshmallow-sqlalchemy==0.29.0
     # via -r base.in
 numpy==1.24.2
     # via pandas
@@ -92,7 +92,7 @@ six==1.16.0
     #   flask-marshmallow
     #   flask-restful
     #   python-dateutil
-sqlalchemy==1.4.46
+sqlalchemy==2.0.5.post1
     # via
     #   -r base.in
     #   alembic
@@ -101,6 +101,10 @@ sqlalchemy==1.4.46
     #   sqlalchemy-utils
 sqlalchemy-utils==0.40.0
     # via -r base.in
+typing-extensions==4.5.0
+    # via
+    #   alembic
+    #   sqlalchemy
 webargs==8.2.0
     # via -r base.in
 werkzeug==2.2.3
