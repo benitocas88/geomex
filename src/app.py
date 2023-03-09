@@ -20,7 +20,7 @@ def create_app() -> Flask:
 
     from urls import admin, api
 
-    api.make_api(app)
+    api.make_api(app, csrf)
     admin.make_admin(app)
 
     @app.template_global()

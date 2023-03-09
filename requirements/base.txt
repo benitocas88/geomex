@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=base.txt base.in
 #
-alembic==1.10.1
+alembic==1.10.2
     # via
     #   -r base.in
     #   flask-migrate

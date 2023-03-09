@@ -9,11 +9,11 @@ class Geomex(Resource):
     def get(self, zipcode):
         neighborhoods = service.get_by_postal_code(zipcode)
         if not neighborhoods:
-            raise 
+            raise
 
         neighborhood = neighborhoods[0]
         return GeomexSchema().dump({
-            "zipcode": neighborhood.postal_code,
+            "zipcode": neighborhood.zipcode,
             "state": neighborhood.municipality.state,
             "municipality": neighborhood.municipality,
             "neighborhoods": neighborhoods
