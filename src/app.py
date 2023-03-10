@@ -9,6 +9,7 @@ from flask_wtf.csrf import CSRFProtect
 migrate = Migrate()
 csrf = CSRFProtect()
 
+
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_pyfile(join('settings', 'base.py'))
@@ -26,6 +27,10 @@ def create_app() -> Flask:
     @app.template_global()
     def static_url(prefix, filename) -> str:
         return urljoin(app.config["STATIC_URL"], f"/{prefix}/{filename}")
+
+    @app.route("/health")
+    def healthy():
+        return "ok", 200, {"Access-Control-Allow-Origin": "*"}
 
     @app.cli.command("test")
     def test():
