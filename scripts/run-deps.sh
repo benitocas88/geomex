@@ -3,7 +3,7 @@
 set -e -o errexit
 
 cyan='\033[0;36m'
-cmd="pip-compile -q"
+cmd="pip-compile -q --resolver=backtracking"
 
 if [ -n "$*" ];then for arg in "$@";do args="${args} ${arg}";done;fi;
 if [ -n "$args" ];then cmd="${cmd} ${args}";fi;
