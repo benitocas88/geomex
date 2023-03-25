@@ -13,8 +13,13 @@ services:
       - ./scripts:/opt/scripts:rw
     env_file:
       - ./.env.local
+    environment:
+      - GUNICORN_CMD_ARGS="--reload"
     networks:
       - geonet
+    ports:
+      - "8080:80"
+      - "7070:80"
     deploy:
       resources:
         limits:
@@ -33,20 +38,6 @@ services:
       - geomaria:/var/lib/mysql:rw
     networks:
       - geonet
-
-  nginx:
-    image: nginx:1.21.1-alpine
-    container_name: geoproxy
-    ports:
-      - "8080:80"
-      - "7070:80"
-    depends_on:
-      - geoapp
-    networks:
-      - geonet
-    volumes:
-      - ./nginx/geo.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./src/static:/usr/share/nginx/html/static:ro
 
 volumes:
   geomaria:

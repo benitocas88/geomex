@@ -4,6 +4,7 @@ from flask_restful import Api
 from geomex.api import Geomex
 from customers.api import Customer
 
+
 class Blueprint(BlueprintBase):
     def __init__(self, *args, **kwargs):
         super(Blueprint, self).__init__(
