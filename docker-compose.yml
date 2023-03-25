@@ -18,8 +18,8 @@ services:
     networks:
       - geonet
     ports:
-      - "8080:80"
-      - "7070:80"
+      - "5000:5000"
+      - "7070:5000"
     deploy:
       resources:
         limits:
@@ -33,7 +33,7 @@ services:
       MARIADB_ROOT_PASSWORD: mexcret
       MARIADB_DATABASE: geomex
     ports:
-      - "3360:3306"
+      - "3306:3306"
     volumes:
       - geomaria:/var/lib/mysql:rw
     networks:
