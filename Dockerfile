@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PATH $APP_ROOT/src/static/node_modules/.bin:$APP_ROOT/.local/bin:$PATH
 
-RUN apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
+RUN set -ex && apt-get update && apt-get upgrade -y && apt-get install --no-install-recommends -y \
     curl \
     gcc \
 && rm -rf /var/lib/apt/lists/*
