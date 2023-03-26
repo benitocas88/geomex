@@ -3,10 +3,10 @@ version: "3.9"
 services:
   geoapp:
     image: ebe/geomex:latest
+    container_name: geomex
     depends_on:
       - mariadb
     build: .
-    container_name: geomex
     volumes:
       - ./src:/home/userapp/src:rw
       - ./requirements:/opt/requirements:rw
