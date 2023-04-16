@@ -1,5 +1,7 @@
+COMPOSE = docker compose
+
 build:
-	docker-compose build
+	$(COMPOSE) build
 
 npm: build
 	docker run -it --rm \
@@ -14,33 +16,30 @@ webpack-dev: npm
 	--workdir /home/userapp/src/static \
 	ebe/geomex:latest webpack --watch --mode=development
 
-up:
-	docker-compose up -d --build
+up: build
+	$(COMPOSE) up -d --remove-orphans
 
-stop:
-	docker stop $(shell docker ps -aq --filter name='geo*')
+down:
+	$(COMPOSE) down --remove-orphans
 
-rm: stop
+rm: down
 	docker rm $(shell docker ps -aq --filter name='geo*')
 
 restart:
-	docker-compose restart
-
-restore:
-	cat geomex.sql | docker exec -i geomaria mysql -u root --password=secret geomex
+	$(COMPOSE) restart
 
 upgrade:
-	docker-compose exec geoapp flask db upgrade
+	$(COMPOSE) exec geoapp flask db upgrade
 
 console:
-	docker-compose exec geoapp bash
+	$(COMPOSE) exec geoapp bash
 
 migrate:
-	docker-compose exec geoapp bash -c "flask db upgrade"
+	$(COMPOSE) exec geoapp bash -c "flask db upgrade"
 
 logs:
-	docker-compose logs -tf
+	$(COMPOSE) logs -tf
 
 PHONY: run-deps
 run-deps:
-	docker-compose run --rm geoapp sh /opt/scripts/run-deps.sh $(args)
+	$(COMPOSE) run --rm -it geoapp sh /opt/scripts/run-deps.sh $(args)
