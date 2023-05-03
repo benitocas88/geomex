@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=base.txt --resolver=backtracking base.in
 #
-alembic==1.10.3
+alembic==1.10.4
     # via
     #   -r base.in
     #   flask-migrate
@@ -12,11 +12,13 @@ aniso8601==9.0.1
     # via flask-restful
 bcrypt==4.0.1
     # via -r base.in
+blinker==1.6.2
+    # via flask
 click==8.1.3
     # via flask
 environs==9.5.0
     # via -r base.in
-flask==2.2.3
+flask==2.3.2
     # via
     #   -r base.in
     #   flask-marshmallow
@@ -65,7 +67,7 @@ marshmallow==3.19.0
     #   webargs
 marshmallow-sqlalchemy==0.29.0
     # via -r base.in
-numpy==1.24.2
+numpy==1.24.3
     # via pandas
 packaging==23.1
     # via
@@ -74,7 +76,7 @@ packaging==23.1
     #   marshmallow
     #   marshmallow-sqlalchemy
     #   webargs
-pandas==2.0.0
+pandas==2.0.1
     # via -r base.in
 passlib==1.7.4
     # via -r base.in
@@ -92,14 +94,14 @@ six==1.16.0
     # via
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.9
+sqlalchemy==2.0.12
     # via
     #   -r base.in
     #   alembic
     #   flask-sqlalchemy
     #   marshmallow-sqlalchemy
     #   sqlalchemy-utils
-sqlalchemy-utils==0.41.0
+sqlalchemy-utils==0.41.1
     # via -r base.in
 typing-extensions==4.5.0
     # via
@@ -109,7 +111,7 @@ tzdata==2023.3
     # via pandas
 webargs==8.2.0
     # via -r base.in
-werkzeug==2.2.3
+werkzeug==2.3.3
     # via
     #   -r base.in
     #   flask
