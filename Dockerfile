@@ -1,4 +1,4 @@
-FROM python:3.11.2-slim as build
+FROM python:3.12.0b3-slim as build
 
 LABEL maintainer="beni522@gmail.com"
 
